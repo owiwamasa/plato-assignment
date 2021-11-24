@@ -8,13 +8,12 @@ function csvToJson(csvFiles){
     const jsonOutput = { "students": [] }
 
     if (!utils.checkCourseWeights(tests)) return { "error": "Invalid course weights" }
-    console.log(students)
-    for (let i = 0; i < students.length; i++) {
-        console.log('here')
-        let student = utils.studentToJson(students[i], combinedMarks)
+
+    for (let key in students) {
+        let student = utils.studentToJson(students[key], combinedMarks)
         jsonOutput["students"].push(student)
     }
-    return jsonOutput
+    return JSON.stringify(jsonOutput)
 }
 
-console.log(csvToJson(csvFiles))
+csvToJson(csvFiles)

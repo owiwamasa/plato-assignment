@@ -12,7 +12,7 @@ function getCsvData(csvFiles){
     return {courses, students, tests, marks}
 }
 
-
+//Parsing Cvs data and separating into arrays
 function parseCsvData(csvFiles) {
     let coursesArr;
     let studentsArr;
@@ -32,7 +32,7 @@ function parseCsvData(csvFiles) {
     return { coursesArr, studentsArr, testsArr, marksArr }
 }
 
-
+// Converting arrays from parseCsvData function into objects
 function convertArrayToObj(arr, isMarks){
     const res = {}
     const titles = arr[0].split(',')
@@ -105,10 +105,11 @@ function studentToJson(student, marks) {
                 newObj["id"] = markCourse_id
                 newObj["name"] = marks[key]["name"]
                 newObj["teacher"] = marks[key]["teacher"]
-                newObj["courseAverage"] = Math.round(weightedMark * 100) / 100
+                newObj["courseAverage"] = weightedMark
                 courses[markCourse_id] = newObj
             } else {
-                courses[markCourse_id]["courseAverage"] += Math.round(weightedMark * 100) / 100
+                courses[markCourse_id]["courseAverage"] += weightedMark
+                courses[markCourse_id]["courseAverage"] = Math.round(courses[markCourse_id]["courseAverage"] * 100) / 100
             }
         }
     }
@@ -120,7 +121,6 @@ function studentToJson(student, marks) {
     }
     student["totalAverage"] = Math.round((totalMarks / studentCourses.length) * 100) / 100
     student["courses"] = studentCourses
-    console.log(student)
     return student
 }
 
