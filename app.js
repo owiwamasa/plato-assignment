@@ -17,3 +17,4 @@ function csvToJson(csvFiles){
 }
 
 csvToJson(csvFiles)
+// console.log(getCsvData(csvFiles))
