@@ -16,5 +16,5 @@ function csvToJson(csvFiles){
     return JSON.stringify(jsonOutput)
 }
 
-csvToJson(csvFiles)
+// console.log(csvToJson(csvFiles))
 // console.log(getCsvData(csvFiles))

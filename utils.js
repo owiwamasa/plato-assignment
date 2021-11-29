@@ -57,8 +57,9 @@ function convertArrayToObj(arr, isMarks){
 // Check for valid course weights
 function checkCourseWeights(tests) {
     const courseWeights = {}
-    for (let i = 0; i < tests.length; i++) {
-        let test = tests[i]
+    let res = true
+    for (let key in tests) {
+        let test = tests[key]
         let course_id = test.course_id
         let weight = Number(test.weight)
         if (!courseWeights[course_id]) {
@@ -68,9 +69,9 @@ function checkCourseWeights(tests) {
         }
     }
     for (let key in courseWeights) {
-        if (courseWeights[key] !== 100) return false
+        if (courseWeights[key] !== 100) res = false
     }
-    return true
+    return res
 }
 
 
